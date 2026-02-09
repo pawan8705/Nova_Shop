@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { memo } from "react";
 
 const reviews = [
   {
@@ -46,35 +45,21 @@ const reviews = [
   },
 ];
 
-const Reviews = () => {
+const Reviews = memo(() => {
   return (
     <section className="bg-[#efeeea] dark:bg-[#080d10] py-10">
       <div className="px-4 mx-auto max-w-7xl">
         {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="mb-12  text-3xl font-extrabold  md:text-4xl text-center text-black dark:text-white"
-        >
-          What Our{" "}
-          <span className="text-[#155dfc]">
-            Customers Say
-          </span>
-        </motion.h2>
+        <h2 className="mb-12 text-3xl font-extrabold md:text-4xl text-center text-black dark:text-white">
+          What Our <span className="text-[#155dfc]">Customers Say</span>
+        </h2>
 
         {/* Reviews Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="p-6 transition-all duration-300 bg-white border dark:bg-black border-black/10 dark:border-white/25 rounded-2xl"
+              className="p-6 transition-all duration-300 bg-white border dark:bg-black border-black/10 dark:border-white/25 rounded-2xl hover:shadow-lg hover:-translate-y-1"
             >
               {/* Stars */}
               <div className="flex mb-3">
@@ -87,7 +72,7 @@ const Reviews = () => {
 
               {/* Review text */}
               <p className="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-                “{item.review}”
+                "{item.review}"
               </p>
 
               {/* User */}
@@ -99,12 +84,14 @@ const Reviews = () => {
                   {item.role}
                 </span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
-};
+});
+
+Reviews.displayName = 'Reviews';
 
 export default Reviews;
