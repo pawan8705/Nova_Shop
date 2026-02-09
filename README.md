@@ -2,34 +2,26 @@
 
 <div align="center">
 
-![Nova Shop Banner](https://img.shields.io/badge/Nova_Shop-E--Commerce-blue?style=for-the-badge)
-![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css)
-![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
 **A cutting-edge, fully responsive e-commerce platform built with modern web technologies**
 
-[🌐 Live Demo](https://nova-shop8705.vercel.app/) • [📝 Report Bug](https://github.com/pawan8705/Nova_Shop/issues) • [✨ Request Feature](https://github.com/pawan8705/Nova_Shop/issues)
+[🌐 Live Demo](https://nova-shop8705.vercel.app/)
 
 </div>
 
 ---
 
-## 📸 Screenshots
-
 ### 🏠 Homepage
-<div align="center">
+<div>
   <i>Stunning hero section with smooth animations and modern design</i>
 </div>
 
 ### 🛒 Products Page
-<div align="center">
+<div>
   <i>Advanced filtering system with seamless product browsing</i>
 </div>
 
 ### 🌙 Dark Mode
-<div align="center">
+<div>
   <i>Beautiful dark theme for comfortable nighttime shopping</i>
 </div>
 
@@ -157,6 +149,4 @@ Nova_Shop/
 ├── tailwind.config.js     # Tailwind CSS configuration
 ├── package.json           # Dependencies
 └── README.md              # Project documentation
-```
 
---
