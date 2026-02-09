@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { getData } from "../../context/DataContext";
 
-const Deals = () => {
+const Deals = memo(() => {
   const navigate = useNavigate();
   const { data, categoryOnlyData, fetchAllProducts } = getData();
   const [deals, setDeals] = useState([]);
@@ -75,7 +75,6 @@ const Deals = () => {
     setIsLoading(false);
   };
 
-  // Fix: Navigate to /category/:category instead of query string
   const handleDealClick = (category) => {
     navigate(`/category/${category}`);
   };
@@ -99,10 +98,8 @@ const Deals = () => {
       <div className="px-4 mx-auto max-w-7xl">
         {/* Header */}
         <div className="my-6 text-center">
-          <h2 className="mb-2 text-3xl font-extrabold  md:text-4xl text-gray-900 dark:text-white">
-            Today's
-            
-            <span className="text-[#155dfc]"> Best Deals</span> 
+          <h2 className="mb-2 text-3xl font-extrabold md:text-4xl text-gray-900 dark:text-white">
+            Today's <span className="text-[#155dfc]">Best Deals</span> 
           </h2>
           <p className="mb-8 text-gray-600 dark:text-gray-400">
             Amazing discounts across all categories
@@ -111,14 +108,11 @@ const Deals = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {deals.map((deal, idx) => (
+          {deals.map((deal) => (
             <div
               key={deal.id}
               onClick={() => handleDealClick(deal.category)}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              style={{
-                animation: `fadeIn 0.4s ease-out ${idx * 0.05}s both`
-              }}
+              className="group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${deal.gradient}`} />
@@ -147,7 +141,7 @@ const Deals = () => {
 
                 {/* Image */}
                 <div className="absolute bottom-5 right-5">
-                  <div className="w-32 h-32 overflow-hidden transition-transform duration-200 bg-white shadow-lg rounded-xl group-hover:scale-110">
+                  <div className="w-32 h-32 overflow-hidden transition-transform duration-300 bg-white shadow-lg rounded-xl group-hover:scale-110">
                     <img
                       src={deal.image}
                       alt={deal.title}
@@ -164,24 +158,10 @@ const Deals = () => {
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
-};
+});
+
+Deals.displayName = 'Deals';
 
 export default Deals;
-
-
-
