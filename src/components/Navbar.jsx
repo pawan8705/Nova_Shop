@@ -166,7 +166,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Toggle */}
-            <div className="lg:hidden dark:text-[#fff]">
+            <div className="lg:hidden dark:text-[#fff] cursor-pointer">
               {openNav ? (
                 <HiMenuAlt3 size={26} onClick={() => setOpenNav(false)} />
               ) : (
@@ -272,20 +272,12 @@ const Navbar = () => {
                   </NavLink>
                 </motion.li>
               ))}
+              <button
+               onClick={() => setDark(!dark)}
+               className="rounded-full w-full border border-[#155dfc] text-[#155dfc] transition-colors w-full py-3 rounded-xl text-lg font-medium"
+              >{dark ? <span>Light Mode</span> : <span>Dark Mode</span>}
+              </button>
             </motion.ul>
-    
-            {/* ===== AUTH (BOTTOM FIXED) ===== */}
-            <div className="flex flex-col gap-5 px-6 py-5 border-t border-black/10 dark:border-white/10">
-    
-            {/* Theme */}
-    
-           <button
-             onClick={() => setDark(!dark)}
-             className="rounded-full w-full border border-[#155dfc] text-[#155dfc] transition-colors w-full py-3 rounded-xl text-lg font-medium"
-           >
-             {dark ? <span>Light Mode</span> : <span>Dark Mode</span>}
-           </button>
-            </div>
           </motion.aside>
         </>
       )}
