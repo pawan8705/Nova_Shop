@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
 const useCases = [
@@ -27,18 +28,15 @@ const useCases = [
   },
 ];
 
-const UseCaseSection = () => {
+const UseCaseSection = memo(() => {
   const navigate = useNavigate();
 
   return (
     <section className="bg-[#efeeea] dark:bg-[#080d10] py-16">
       <div className="px-4 mx-auto max-w-7xl">
         {/* Heading */}
-        <h2 className="mb-12 text-3xl font-extrabold  md:text-4xl text-center text-black dark:text-white">
-          Shop by{" "}
-          <span className="text-[#155dfc]">
-            Use Case
-          </span>
+        <h2 className="mb-12 text-3xl font-extrabold md:text-4xl text-center text-black dark:text-white">
+          Shop by <span className="text-[#155dfc]">Use Case</span>
         </h2>
 
         {/* Cards */}
@@ -47,23 +45,11 @@ const UseCaseSection = () => {
             <button
               key={index}
               onClick={() => navigate(item.path)}
-              className="
-                relative rounded-3xl p-6 text-left
-                bg-white dark:bg-[#0f141a]
-                border border-black/10 dark:border-white/10
-                transition-all duration-300
-                hover:-translate-y-1 hover:shadow-xl
-                group
-              "
+              className="relative rounded-3xl p-6 text-left bg-white dark:bg-[#0f141a] border border-black/10 dark:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group"
             >
               {/* top accent */}
               <div
-                className={`
-                  h-1 w-14 rounded-full mb-5
-                  bg-gradient-to-r ${item.color}
-                  transition-all duration-300
-                  group-hover:w-24
-                `}
+                className={`h-1 w-14 rounded-full mb-5 bg-gradient-to-r ${item.color} transition-all duration-300 group-hover:w-24`}
               />
 
               <h3 className="text-lg font-semibold text-black dark:text-white">
@@ -83,6 +69,8 @@ const UseCaseSection = () => {
       </div>
     </section>
   );
-};
+});
+
+UseCaseSection.displayName = 'UseCaseSection';
 
 export default UseCaseSection;
