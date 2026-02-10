@@ -139,7 +139,7 @@ const Navbar = () => {
             <Link 
               to="/cart" 
               onClick={handleCartClick}
-              className="relative"
+              className="relative hidden lg:block"
             >
               <IoCartOutline size={26} />
               <span className="absolute -top-2 -right-2 bg-[#155dfc] text-white text-xs px-2 rounded-full">
@@ -156,7 +156,7 @@ const Navbar = () => {
             </button>
 
             {/* Auth Desktop */}
-            <div className="hidden lg:block">
+            <div>
               <SignedOut>
                 <SignInButton className="bg-[#155dfc] text-[#fff] px-4 py-1 rounded-md" />
               </SignedOut>
@@ -166,7 +166,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Toggle */}
-            <div className="lg:hidden dark:text-[#fff] cursor-pointer">
+            <div className="lg:hidden dark:text-[#fff cursor-pointer">
               {openNav ? (
                 <HiMenuAlt3 size={26} onClick={() => setOpenNav(false)} />
               ) : (
@@ -215,15 +215,6 @@ const Navbar = () => {
                 <span className="text-[#1f2937] dark:text-[#fafaf9]">Nova</span>
                 Shop
               </h2>
-
-                              
-              <SignedOut>
-                <SignInButton className="w-[35%] bg-[#155dfc] text-white py-3 rounded-xl text-md font-medium" />
-              </SignedOut>
-    
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
     
               {/* Close Button */}
               <motion.button
@@ -231,7 +222,7 @@ const Navbar = () => {
                 onClick={() => setOpenNav(false)}
                 className="h-10 w-10 rounded-full
                 bg-[#155dfc] text-[#fafaf9]
-                flex items-center justify-center"
+                flex items-center justify-center cursor-pointer"
               >
                 <HiMenuAlt3 size={22} />
               </motion.button>
@@ -272,11 +263,29 @@ const Navbar = () => {
                   </NavLink>
                 </motion.li>
               ))}
+              <hr className="text-[#155dfc] border-[1px] rounded" />
+              <Link 
+              to="/cart" 
+              onClick={handleCartClick}
+              className="relative"
+            >
+              <div className="w-full flex text-lg my-6">
+                <button
+                  className="w-[80%] border border-[#155dfc] text-[#155dfc] py-3 text-lg rounded-l-xl font-extrabold hover:bg-[#155dfc] hover:border-r-[#fff] dark:hover:border-r-[#000] hover:text-[#fff] transition duration-500">
+                  Open Cart
+                </button>
+                <span className="bg-[#155dfc] text-white py-2.5 text-xl rounded-r-xl font-extrabold w-[20%] text-center">{cartItem.length}</span> 
+              </div>
+
+
+            </Link>
+
               <button
                onClick={() => setDark(!dark)}
-               className="rounded-full w-full border border-[#155dfc] text-[#155dfc] transition-colors w-full py-3 rounded-xl text-lg font-medium"
-              >{dark ? <span>Light Mode</span> : <span>Dark Mode</span>}
-              </button>
+               className="rounded-full w-full border border-[#155dfc] bg-[#155dfc] text-white w-full py-3 rounded-xl text-lg font-medium hover:text-[#155dfc] hover:bg-[#fff] dark:hover:bg-[#000] transition duration-500"
+             >
+               {dark ? <span>Light Mode</span> : <span>Dark Mode</span>}
+             </button>
             </motion.ul>
           </motion.aside>
         </>
